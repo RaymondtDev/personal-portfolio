@@ -20,6 +20,10 @@
   --card-rds: 10px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--body-font);
 }
@@ -28,9 +32,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
 }
 
+p {
+  font-size: 1.1rem;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 button {
@@ -44,6 +58,13 @@ button {
 }
 button:hover {
   transform: scale(1.05);
+}
+
+.section-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: clamp(1.5rem, 5vw, 2.5vw);
+  margin-bottom: 40px;
 }
 
 .grid-container {

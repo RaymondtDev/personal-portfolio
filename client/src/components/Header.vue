@@ -23,6 +23,7 @@
     top: 0;
     width: 100%;
     padding-block: 10px;
+    z-index: 10;
   }
 
   .nav-banner {
