@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue';
+import ProjectCard from '@/components/ProjectCard.vue';
 import ServiceCard from '@/components/ServiceCard.vue';
 import { useIntersectionObserver } from '@vueuse/core';
 import { ref } from 'vue';
@@ -20,8 +21,6 @@ const { stop } = useIntersectionObserver(
 </script>
 
 <template>
-  <Header />
-
   <section class="hero-section full-bleed grid-container">
     <h1 class="hero-title">Hey there! My name is <span class="name">Raymond</span> and I am a <span class="specialization">full-stack developer</span></h1>
 
@@ -66,20 +65,40 @@ const { stop } = useIntersectionObserver(
   <section class="about-section full-bleed grid-container" id="about">
     <h2 class="section-title">About Me</h2>
     <p>
-      My name is Thabiso Raymond Phahlamohlaka and I am a full-stack developer. My tech stack is Mongodb, Express, React, and Nodejs (MERN). I build simple websites for small to medium businesses, full stack web applications, and MVP (Minimum Viable Product) dashboards.
+      I'm a full-stack web developer with a passion for building clean, reliable, and user-focused web applications. I enjoy turning ideas into practical solutions, whether that's developing business management systems, creating responsive websites, or exploring new technologies that improve the way websites are built.<br/><br/>
+      I primarily work with Javascript, Python, React, Vue, MongoDB, ExpressJS, and NodeJS to build web applications, and I'm currently expanding my skills in areas like Typescript (this portfolio was built using Typescript), SQL databases, and low-level languages like C, C++, and Java.
     </p>
     <div class="skill-icons">
-      <img src="/icons/python-logo.svg" alt="skill-icon">
-      <img src="/icons/javascript-logo.svg" alt="skill-icon">
-      <img src="/icons/reactjs-logo.svg" alt="skill-icon">
-      <img src="/icons/vuejs-logo.svg" alt="skill-icon">
-      <img src="/icons/nodejs-logo.svg" alt="skill-icon">
-      <img src="/icons/mongodb-logo.svg" alt="skill-icon">
+      <img src="/icons/python-logo.svg" alt="skill icon">
+      <img src="/icons/javascript-logo.svg" alt="skill icon">
+      <img src="/icons/reactjs-logo.svg" alt="skill icon">
+      <img src="/icons/vuejs-logo.svg" alt="skill icon">
+      <img src="/icons/nodejs-logo.svg" alt="skill icon">
+      <img src="/icons/mongodb-logo.svg" alt="skill icon">
     </div>
   </section>
 
   <section class="projects-section full-bleed grid-container" id="projects">
     <h2 class="section-title">My Projects</h2>
+    <div class="project-cards">
+      <ProjectCard
+        thumbnail="/screenshots/project1-thumbnail.png"
+        title="Project Management System"
+        :live-link="false"
+      />
+      <ProjectCard
+        thumbnail="/screenshots/project2-thumbnail.png"
+        title="Electrician Website"
+        :live-link="true"
+        live-link-href="https://electrician-website-demo-red.vercel.app"
+      />
+      <ProjectCard
+        thumbnail="/screenshots/project3-thumbnail.png"
+        title="K-Flava Restaurant"
+        :live-link="true"
+        live-link-href="https://k-flava-restaurant.vercel.app"
+      />
+    </div>
   </section>
 </template>
 
@@ -151,6 +170,12 @@ const { stop } = useIntersectionObserver(
     padding-block: 60px;
     text-align: center;
 
+    .section-title::before {
+      content: ">>";
+      color: var(--code-color);
+      margin-right: 10px;
+    }
+
     p {
       width: min(50vw, 100%);
       margin-inline: auto;
@@ -173,5 +198,12 @@ const { stop } = useIntersectionObserver(
   .projects-section {
     background-color: var(--accent-bg);
     padding-block: 50px;
+
+    .project-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 10px;
+    }
   }
 </style>
