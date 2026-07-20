@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue';
+import PricingCard from '@/components/PricingCard.vue';
 import ProjectCard from '@/components/ProjectCard.vue';
 import ServiceCard from '@/components/ServiceCard.vue';
 import { useIntersectionObserver } from '@vueuse/core';
@@ -97,6 +98,55 @@ const { stop } = useIntersectionObserver(
         title="K-Flava Restaurant"
         :live-link="true"
         live-link-href="https://k-flava-restaurant.vercel.app"
+      />
+    </div>
+  </section>
+
+  <section class="pricing-section full-bleed grid-container" id="pricing">
+    <p class="section-subtitle">Don't Wait To Get A Quote!</p>
+    <h2 class="section-title">Affordable Website Pricing</h2>
+    <div class="pricing-cards">
+      <PricingCard
+        package-title="Essential Website"
+        package-price="2500"
+        package-description="A 2-3 page website to jump-start your business' online presence."
+        :package-features="[
+          '2-3 Pages',
+          'Beautiful & Professionaly Designed',
+          'Responsive Design',
+          'Excellent User Experience',
+          'SEO-Optimization',
+          'Speed Optimization',
+        ]"
+        :outline="true"
+        outline-color="var(--primary-color)"
+        text-color="white"
+      />
+      <PricingCard
+        package-title="Full-Stack Website"
+        package-price="8000"
+        package-description="Web-application with a client-facing user interface, a server, and a database."
+        :package-features="[
+          'Authentication & Authorization Layer',
+          'Projessional Design',
+          'Responsive Design',
+          'Speed Optimization',
+          'Back-End Server',
+          'Database (MongoDB or SQL)'
+        ]"
+      />
+      <PricingCard
+        package-title="Admin Dashboard"
+        package-price="15000"
+        package-description="MVP (Minimum Viable Product) Admin Dashboard for business analytics and server-side operations."
+        :package-features="[
+          'Authentication & Authorization Layer',
+          'Dashboard Analytics',
+          'Statistics & Charts',
+          'Speed Optimization',
+          'Security Layer',
+          'Professional Design'
+        ]"
       />
     </div>
   </section>
@@ -203,6 +253,31 @@ const { stop } = useIntersectionObserver(
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, auto);
+      gap: 10px;
+    }
+  }
+
+  .pricing-section {
+    background-color: var(--primary-bg);
+    padding-block: 50px;
+
+    .section-title::before {
+      content: ">>";
+      color: var(--code-color);
+      margin-right: 10px;
+    }
+
+    .section-subtitle {
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, auto);
       gap: 10px;
     }
   }

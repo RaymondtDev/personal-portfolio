@@ -3,12 +3,14 @@
 <template>
   <header class="full-bleed grid-container">
     <div class="nav-banner">
-      <a href="/">
+      <a href="#">
         <h1 class="logo">Raymondt<span>Dev</span></h1>
       </a>
       <nav class="nav-links">
+        <a href="#" class="link">Home</a>
         <a href="#about" class="link">About</a>
         <a href="#projects" class="link">Projects</a>
+        <a href="#pricing" class="link">Pricing</a>
         <a href="#contact" class="link">Contact</a>
       </nav>
     </div>
