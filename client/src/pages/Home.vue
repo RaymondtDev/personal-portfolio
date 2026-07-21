@@ -22,10 +22,10 @@ const { stop } = useIntersectionObserver(
 );
 
 interface UseForm {
-  name: String,
-  email: String,
-  phone?: String,
-  message?: String
+  name: string,
+  email: string,
+  phone?: string,
+  message?: string
 }
 
 const data = reactive<UseForm>({
