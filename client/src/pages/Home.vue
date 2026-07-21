@@ -4,10 +4,11 @@ import PricingCard from '@/components/PricingCard.vue';
 import ProjectCard from '@/components/ProjectCard.vue';
 import ServiceCard from '@/components/ServiceCard.vue';
 import { useIntersectionObserver } from '@vueuse/core';
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 
 const target = ref(null);
 const isVisible = ref(false);
+const isLoading = ref(false);
 
 const { stop } = useIntersectionObserver(
   target,
@@ -18,7 +19,25 @@ const { stop } = useIntersectionObserver(
     }
   },
   { threshold: 0.5 }
-)
+);
+
+interface UseForm {
+  name: String,
+  email: String,
+  phone?: String,
+  message?: String
+}
+
+const data = reactive<UseForm>({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
+
+const submitFormData = () => {
+  console.log(data);
+}
 </script>
 
 <template>
@@ -150,6 +169,36 @@ const { stop } = useIntersectionObserver(
       />
     </div>
   </section>
+
+  <section class="contact-section full-bleed grid-container" id="contact">
+    <p class="section-subtitle">Ready To Start Working With Me?</p>
+    <h2 class="section-title">Send Me A Message!</h2>
+    <div class="form-container">
+      <form @submit.prevent="submitFormData">
+        <label for="name">
+          Name*
+          <input type="text" name="name" id="name" v-model="data.name" placeholder="Name" required>
+        </label>
+        <div>
+          <label for="email">
+            Email*
+            <input type="email" name="email" id="email" v-model="data.email" placeholder="Email" required>
+          </label>
+          <label for="phone">
+            Phone
+            <input type="text" name="phone" id="phone" v-model="data.phone" placeholder="Number">
+          </label>
+        </div>
+        <label for="message">
+          Message*
+        </label>
+        <textarea rows="8" name="message" id="message" placeholder="Tell me about your website requrements. Your goals, ideas, or examples to get the conversation started." v-model="data.message" required></textarea>
+
+        <button v-if="isLoading" type="submit" class="submit-btn">Submitting</button>
+        <button v-else type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -279,6 +328,43 @@ const { stop } = useIntersectionObserver(
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, auto);
       gap: 10px;
+    }
+  }
+
+  .contact-section {
+    background-color: var(--accent-bg);
+    padding-block: 50px;
+
+    .section-subtitle {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .form-container {
+      background-color: var(--secondary-bg);
+      padding: 15px 30px;
+      border-radius: var(--card-rds);
+      width: min(60vw, 90vw);
+      margin-inline: auto;
+      box-shadow: 0 4px 12px #00000027;
+
+      form div {
+        display: flex;
+        gap: 10px;
+
+        label {
+          width: 100%;
+        }
+      }
+
+      form button {
+        width: 100%;
+        margin-top: 10px;
+      }
+      form button:hover {
+        transform: scale(1.01);
+      }
     }
   }
 </style>

@@ -4,6 +4,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -60,6 +61,30 @@ button {
 }
 button:hover {
   transform: scale(1.05);
+}
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+input,textarea {
+  padding: 15px 20px;
+  border-radius: 10px;
+  background-color: var(--accent-bg);
+  border: none;
+  font-size: 1rem;
+  width: 100%;
+  font-family: var(--body-font);
+}
+input:focus,textarea:focus {
+  outline-color: var(--primary-color);
 }
 
 .section-title {
