@@ -10,6 +10,7 @@ const servicesSection = useTemplateRef<HTMLElement | null>('services-section');
 const projectsSection = useTemplateRef<HTMLElement | null>('projects-section');
 const pricingSection = useTemplateRef<HTMLElement | null>('pricing-section');
 const isLoading = ref<boolean>(false);
+const apiMessage = ref<string | null>(null);
 
 interface UseForm {
   name: string,
@@ -34,10 +35,23 @@ const submitFormData = async () => {
       phone: data.phone,
       message: data.message
     });
+
+    if (response.status === 200) {
+      apiMessage.value = "Email Sent"
+
+      setTimeout(() => {
+        apiMessage.value = null;
+      }, 3000);
+    }
   } catch (error) {
     console.error("Error sendind email:", error);
   } finally {
     isLoading.value = false;
+
+    data.name = "";
+    data.email = "";
+    data.phone = "";
+    data.message = "";
   }
 }
 
@@ -198,7 +212,8 @@ onMounted(() => {
         </label>
         <textarea rows="8" name="message" id="message" placeholder="Tell me about your website requrements. Your goals, ideas, or examples to get the conversation started." v-model="data.message" required></textarea>
 
-        <button v-if="isLoading" type="submit" class="submit-btn">Submitting</button>
+        <button v-if="isLoading" class="submit-btn">Submitting</button>
+        <button v-else-if="apiMessage" class="submit-btn">{{ apiMessage }}</button>
         <button v-else type="submit" class="submit-btn">Send Message</button>
       </form>
     </div>
