@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import Header from '@/components/Header.vue';
 import PricingCard from '@/components/PricingCard.vue';
 import ProjectCard from '@/components/ProjectCard.vue';
 import ServiceCard from '@/components/ServiceCard.vue';
 import { useIntersectionObserver } from '@vueuse/core';
 import { ref, reactive } from 'vue';
+import axios from "axios";
 
 const target = ref(null);
-const isVisible = ref(false);
-const isLoading = ref(false);
+const isVisible = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
 
 const { stop } = useIntersectionObserver(
   target,
@@ -35,8 +35,20 @@ const data = reactive<UseForm>({
   message: "",
 });
 
-const submitFormData = () => {
-  console.log(data);
+const submitFormData = async () => {
+  try {
+    isLoading.value = true;
+    const response = await axios.post('http://localhost:3000/send-mail', {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      message: data.message
+    });
+  } catch (error) {
+    console.error("Error sendind email:", error);
+  } finally {
+    isLoading.value = false;
+  }
 }
 </script>
 
