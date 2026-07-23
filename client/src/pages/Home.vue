@@ -146,9 +146,9 @@ onMounted(() => {
       <PricingCard
         package-title="Essential Website"
         package-price="2500"
-        package-description="A 2-3 page website to jump-start your business' online presence."
+        package-description="A 1-3 page website to jump-start your business' online presence."
         :package-features="[
-          '2-3 Pages',
+          'Singe or multi-page website',
           'Beautiful & Professionaly Designed',
           'Responsive Design',
           'Excellent User Experience',
