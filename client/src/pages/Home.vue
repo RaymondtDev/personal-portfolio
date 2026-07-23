@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import Header from '@/components/Header.vue';
+import { ref, reactive, onMounted, useTemplateRef } from 'vue';
+import axios from "axios";
 import PricingCard from '@/components/PricingCard.vue';
 import ProjectCard from '@/components/ProjectCard.vue';
 import ServiceCard from '@/components/ServiceCard.vue';
-import { useIntersectionObserver } from '@vueuse/core';
-import { ref, reactive } from 'vue';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const target = ref(null);
-const isVisible = ref(false);
-const isLoading = ref(false);
-
-const { stop } = useIntersectionObserver(
-  target,
-  ([entry]: IntersectionObserverEntry[]) => {
-    if (entry?.isIntersecting) {
-      isVisible.value = true
-      stop()
-    }
-  },
-  { threshold: 0.5 }
-);
+const servicesSection = useTemplateRef<HTMLElement | null>('services-section');
+const projectsSection = useTemplateRef<HTMLElement | null>('projects-section');
+const pricingSection = useTemplateRef<HTMLElement | null>('pricing-section');
+const isLoading = ref<boolean>(false);
 
 interface UseForm {
   name: string,
@@ -35,9 +25,27 @@ const data = reactive<UseForm>({
   message: "",
 });
 
-const submitFormData = () => {
-  console.log(data);
+const submitFormData = async () => {
+  try {
+    isLoading.value = true;
+    const response = await axios.post('http://localhost:3000/send-mail', {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      message: data.message
+    });
+  } catch (error) {
+    console.error("Error sendind email:", error);
+  } finally {
+    isLoading.value = false;
+  }
 }
+
+onMounted(() => {
+  useScrollReveal(servicesSection.value, servicesSection.value?.querySelectorAll(".service-card"));
+  useScrollReveal(projectsSection.value, projectsSection.value?.querySelectorAll(".project-card"));
+  useScrollReveal(pricingSection.value, pricingSection.value?.querySelectorAll(".pricing-card"));
+})
 </script>
 
 <template>
@@ -56,28 +64,24 @@ const submitFormData = () => {
     </div>
   </section>
 
-  <section class="services-section full-bleed grid-container">
+  <section class="services-section full-bleed grid-container" ref="services-section">
     <h2 class="section-title">What I Do</h2>
-    <div class="service-cards" ref="target">
+    <div class="service-cards">
       <ServiceCard
         icon="/icons/dashboard-icon.svg" 
         heading="Dashboard Development"
         description="Intuitive and interactive visual interfaces that transform complex and scattered data into comprehensible insights about your business"
-        :is-visible="isVisible"
       />
       <ServiceCard 
         icon="/icons/website-icon.svg"
         heading="Full-Stack Development"
         description="End-to-end web application development that covers both the user-facing interface and the underlying server, database, and logic"
-        :is-visible="isVisible"
-        delay="300ms"
+
       />
       <ServiceCard
         icon="/icons/database-icon.svg"
         heading="Web Development"
         description="Beautiful and responsive websites that convert for small to medium sized business. Search Engine Optimized to maximize Google Search rankings"
-        :is-visible="isVisible"
-        delay="600ms"
       />
     </div>
   </section>
@@ -98,7 +102,7 @@ const submitFormData = () => {
     </div>
   </section>
 
-  <section class="projects-section full-bleed grid-container" id="projects">
+  <section class="projects-section full-bleed grid-container" id="projects" ref="projects-section">
     <h2 class="section-title">My Projects</h2>
     <div class="project-cards">
       <ProjectCard
@@ -121,7 +125,7 @@ const submitFormData = () => {
     </div>
   </section>
 
-  <section class="pricing-section full-bleed grid-container" id="pricing">
+  <section class="pricing-section full-bleed grid-container" id="pricing" ref="pricing-section">
     <p class="section-subtitle">Don't Wait To Get A Quote!</p>
     <h2 class="section-title">Affordable Website Pricing</h2>
     <div class="pricing-cards">
