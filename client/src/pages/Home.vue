@@ -230,7 +230,7 @@ onMounted(() => {
     .hero-title {
       margin-bottom: 40px;
       display: inline-block;
-      font-size: clamp(3rem, 5vw, 5rem);
+      font-size: clamp(2.5rem, 5vw, 5rem);
     }
     .hero-title::before {
       content: ">>";
@@ -244,7 +244,7 @@ onMounted(() => {
 
     .hero-subtitle {
       margin-bottom: 30px;
-      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-size: clamp(1rem, 2vw, 1.5rem);
     }
 
     .hero-subtitle span {
@@ -295,7 +295,7 @@ onMounted(() => {
     }
 
     p {
-      width: min(50vw, 100%);
+      width: 50vw;
       margin-inline: auto;
       margin-bottom: 20px;
     }
@@ -320,7 +320,7 @@ onMounted(() => {
     .project-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, auto);
+      grid-template-rows: repeat(3, auto);
       gap: 10px;
     }
   }
@@ -364,7 +364,7 @@ onMounted(() => {
       background-color: var(--secondary-bg);
       padding: 15px 30px;
       border-radius: var(--card-rds);
-      width: min(60vw, 90vw);
+      width: 60vw;
       margin-inline: auto;
       box-shadow: 0 4px 12px #00000027;
 
@@ -384,6 +384,29 @@ onMounted(() => {
       form button:hover {
         transform: scale(1.01);
       }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .contact-section .form-container {
+      width: 95vw;
+      padding: 10px;
+    }
+    .contact-section .form-container form div {
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .services-section > .service-cards, .projects-section > .project-cards, .pricing-section > .pricing-cards {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .about-section .skill-icons {
+      gap: 5px;
+    }
+    .about-section p {
+      width: 100%;
     }
   }
 </style>

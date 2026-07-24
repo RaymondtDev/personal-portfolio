@@ -12,7 +12,7 @@ const props = defineProps({
     <figure>
       <img :src="thumbnail" alt="project thumbnail">
     </figure>
-    <div>
+    <div class="project-details">
       <h3>{{ title }}</h3>
       <div class="cta-btns">
         <a :href="liveLinkHref" target="blank" v-if="liveLink">
@@ -33,7 +33,7 @@ const props = defineProps({
   .project-card {
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 2;
+    grid-row: span 3;
     background-color: var(--secondary-bg);
     padding: 10px;
     box-shadow: 0 4px 12px #00000027;
@@ -47,6 +47,12 @@ const props = defineProps({
       img {
         border-radius: 7px;
       }
+    }
+
+    .project-details {
+      grid-row: span 2;
+      display: grid;
+      grid-template-rows: subgrid;
     }
 
     .cta-btns {

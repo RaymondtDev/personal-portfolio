@@ -29,6 +29,10 @@ html {
 
 body {
   font-family: var(--body-font);
+  width: 100svw;
+}
+#root {
+  width: 100svw;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -96,7 +100,8 @@ input:focus,textarea:focus {
 
 .grid-container {
   display: grid;
-  grid-template-columns: [full-start] 1fr [content-start] min(80vw, 100%) [content-end] 1fr [full-end];
+  grid-template-columns: [full-start] 1fr [content-start] 80vw [content-end] 1fr [full-end];
+  width: 100%;
 
   & > * {
     grid-column: content;
@@ -109,4 +114,24 @@ input:focus,textarea:focus {
 
 .primary-cta {
   background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: [full-start] 1fr [content-start] 98% [content-end] 1fr [full-end];
+  }
+
+  button {
+    padding: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .grid-container {
+    grid-template-columns: [full-start] 1fr [content-start] 100% [content-end] 1fr [full-end];
+  }
+
+  section, header, footer {
+    padding-inline: 10px;
+  }
 }

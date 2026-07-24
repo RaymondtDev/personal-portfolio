@@ -35,6 +35,7 @@
     background-color: var(--primary-bg);
     padding-block: 70px;
     color: white;
+    width: 100svw;
 
     .footer-content {
       display: grid;
@@ -73,5 +74,23 @@
 
   li a:hover {
     color: var(--primary-color);
+  }
+
+  @media screen and (max-width: 425px) {
+    .footer-section .footer-content {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .footer-section .footer-content div {
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      text-align: center;
+    }
+
+    ul li {
+      padding-left: 20px;
+      padding-inline: 5px;
+    }
   }
 </style>
