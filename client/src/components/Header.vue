@@ -43,7 +43,6 @@ function linkClick(): void {
     width: 100%;
     padding-block: 10px;
     z-index: 10;
-    width: 100svw;
   }
 
   .nav-banner {

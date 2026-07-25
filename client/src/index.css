@@ -29,10 +29,6 @@ html {
 
 body {
   font-family: var(--body-font);
-  width: 100svw;
-}
-#root {
-  width: 100svw;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -35,7 +35,6 @@
     background-color: var(--primary-bg);
     padding-block: 70px;
     color: white;
-    width: 100svw;
 
     .footer-content {
       display: grid;
