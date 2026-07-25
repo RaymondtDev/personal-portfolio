@@ -1,4 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const displayMenu = ref<boolean>(false);
+
+function toggelMenu(): void {
+  displayMenu.value = !displayMenu.value;
+}
+function linkClick(): void {
+  displayMenu.value = false;
+}
+</script>
 
 <template>
   <header class="full-bleed grid-container">
@@ -6,14 +17,14 @@
       <a href="#">
         <h1 class="logo">Raymondt<span>Dev</span></h1>
       </a>
-      <nav class="nav-links">
-        <a href="#" class="link">Home</a>
-        <a href="#about" class="link">About</a>
-        <a href="#projects" class="link">Projects</a>
-        <a href="#pricing" class="link">Pricing</a>
-        <a href="#contact" class="link">Contact</a>
+      <nav class="nav-links" :class="{ 'active': displayMenu}">
+        <a href="#" class="link" @click="linkClick">Home</a>
+        <a href="#about" class="link" @click="linkClick">About</a>
+        <a href="#projects" class="link" @click="linkClick">Projects</a>
+        <a href="#pricing" class="link" @click="linkClick">Pricing</a>
+        <a href="#contact" class="link" @click="linkClick">Contact</a>
       </nav>
-      <div class="hamburger">
+      <div class="hamburger" @click="toggelMenu">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -28,6 +39,7 @@
     color: white;
     position: sticky;
     top: 0;
+    left: 0;
     width: 100%;
     padding-block: 10px;
     z-index: 10;
@@ -68,6 +80,29 @@
   }
 
   @media screen and (max-width: 425px) {
+    .nav-banner {
+      position: relative;
+    }
+
+    .nav-links {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      flex-direction: column;
+      width: 70%;
+      height: 100svh;
+      background-color: var(--primary-bg);
+      opacity: 80%;
+      backdrop-filter: blur(50px);
+
+      .link {
+        font-size: 1.5rem;
+      }
+    }
+    .nav-links.active {
+      display: flex;
+    }
+
     .nav-banner > nav {
       display: none;
     }
