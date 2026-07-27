@@ -24,7 +24,11 @@
           <li><b>Email:</b><br/> raymondtdev@gmail.com</li>
           <li><b>Phone:</b><br/> 066 133 1990</li>
         </ul>
-        <div class="social-links"></div>
+        <div class="social-links">
+          <a href="https://za.linkedin.com/in/thabiso-phahlamohlaka-533b13b7" target="blank" class="social-icon"><img src="/icons/linkedin.svg" alt="social media icon"></a>
+          <a href="https://github.com/RaymondtDev" target="blank" class="social-icon"><img src="/icons/github.svg" alt="social media icon"></a>
+          <a href="https://wa.me/+27661331990" target="blank" class="social-icon"><img src="/icons/whatsapp.svg" alt="social media icon"></a>
+        </div>
       </div>
     </div>
   </footer>
@@ -54,13 +58,22 @@
       content: ">>";
       color: var(--code-color);
       margin-right: 10px;
-    }
+      }
 
       .logo h1 {
         font-size: clamp(1.5rem, 5vw, 2.5rem);
       }
       .logo h1 span {
         color: var(--primary-color);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 5px;
+      }
+      .social-icon {
+        width: 30px;
+        aspect-ratio: 1;
       }
     }
   }

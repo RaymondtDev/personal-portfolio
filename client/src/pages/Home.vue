@@ -113,6 +113,7 @@ onMounted(() => {
       <img src="/icons/vuejs-logo.svg" alt="skill icon">
       <img src="/icons/nodejs-logo.svg" alt="skill icon">
       <img src="/icons/mongodb-logo.svg" alt="skill icon">
+      <img src="/icons/tailwind.svg" alt="skill icon">
     </div>
   </section>
 
@@ -123,18 +124,21 @@ onMounted(() => {
         thumbnail="/screenshots/project1-thumbnail.png"
         title="Project Management System"
         :live-link="false"
+        git-hub-link-href="https://github.com/RaymondtDev/project-management-system"
       />
       <ProjectCard
         thumbnail="/screenshots/project2-thumbnail.png"
         title="Electrician Website"
         :live-link="true"
         live-link-href="https://electrician-website-demo-red.vercel.app"
+        git-hub-link-href="https://github.com/RaymondtDev/electrician-website-demo"
       />
       <ProjectCard
         thumbnail="/screenshots/project3-thumbnail.png"
         title="K-Flava Restaurant"
         :live-link="true"
         live-link-href="https://k-flava-restaurant.vercel.app"
+        git-hub-link-href="https://github.com/RaymondtDev/k-flava-restaurant"
       />
     </div>
   </section>

@@ -3,7 +3,8 @@ const props = defineProps({
   thumbnail: String,
   title: String,
   liveLink: Boolean,
-  liveLinkHref: String
+  liveLinkHref: String,
+  gitHubLinkHref: String
 })
 </script>
 
@@ -21,7 +22,7 @@ const props = defineProps({
           </button>
         </a>
         <div v-else style="display: none;" />
-        <a href="#">
+        <a :href="gitHubLinkHref">
           <button class="secondary-cta">Github</button>
         </a>
       </div>

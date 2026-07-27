@@ -91,7 +91,6 @@ function linkClick(): void {
       width: 70%;
       height: 100svh;
       background-color: var(--primary-bg);
-      opacity: 80%;
       backdrop-filter: blur(50px);
 
       .link {
