@@ -22,7 +22,7 @@ const props = defineProps({
           </button>
         </a>
         <div v-else style="display: none;" />
-        <a :href="gitHubLinkHref">
+        <a :href="gitHubLinkHref" target="blank">
           <button class="secondary-cta">Github</button>
         </a>
       </div>
