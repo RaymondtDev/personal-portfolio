@@ -4,11 +4,12 @@ import { Resend } from "resend";
 import cors from "cors";
 
 const app = express();
-const PORT = 3000;
+const PORT: string | 3000 = process.env.PORT || 3000;
+const URL = process.env.NODE_ENV === "production" ? "https://personal-portfolio-tely.onrender.com" : "http://localhost:5173";
 
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: URL
 }));
 
 const resend: Resend = new Resend(process.env.RESEND_API_KEY);
