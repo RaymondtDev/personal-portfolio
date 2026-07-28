@@ -8,7 +8,7 @@ const PORT: string | 3000 = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors({
-  origin: ["http://localhost:5173", "https://personal-portfolio-omega-dun-98.vercel.app/"]
+  origin: ["https://personal-portfolio-omega-dun-98.vercel.app", "http://localhost:5173"]
 }));
 
 const resend: Resend = new Resend(process.env.RESEND_API_KEY);
