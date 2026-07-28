@@ -31,7 +31,7 @@ const URL = import.meta.env.NODE_ENV === "production" ? "https://personal-portfo
 const submitFormData = async () => {
   try {
     isLoading.value = true;
-    const response = await axios.post(`${URL}/send-mail`, {
+    const response = await axios.post('https://personal-portfolio-r5h8.onrender.com/send-mail', {
       name: data.name,
       email: data.email,
       phone: data.phone,
