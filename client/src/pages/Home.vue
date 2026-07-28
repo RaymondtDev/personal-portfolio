@@ -26,10 +26,12 @@ const data = reactive<UseForm>({
   message: "",
 });
 
+const URL = import.meta.env.NODE_ENV === "production" ? "https://personal-portfolio-r5h8.onrender.com" : "http://localhost:3000"
+
 const submitFormData = async () => {
   try {
     isLoading.value = true;
-    const response = await axios.post('http://localhost:3000/send-mail', {
+    const response = await axios.post(`${URL}/send-mail`, {
       name: data.name,
       email: data.email,
       phone: data.phone,

@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 const PORT: string | 3000 = process.env.PORT || 3000;
-const URL = process.env.NODE_ENV === "production" ? "https://personal-portfolio-tely.onrender.com" : "http://localhost:5173";
+const URL = process.env.NODE_ENV === "production" ? "https://personal-portfolio-omega-dun-98.vercel.app/" : "http://localhost:5173";
 
 app.use(express.json());
 app.use(cors({
