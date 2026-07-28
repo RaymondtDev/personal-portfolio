@@ -5,11 +5,10 @@ import cors from "cors";
 
 const app = express();
 const PORT: string | 3000 = process.env.PORT || 3000;
-const URL = process.env.NODE_ENV === "production" ? "https://personal-portfolio-omega-dun-98.vercel.app/" : "http://localhost:5173";
 
 app.use(express.json());
 app.use(cors({
-  origin: URL
+  origin: ["http://localhost:5173", "https://personal-portfolio-omega-dun-98.vercel.app/"]
 }));
 
 const resend: Resend = new Resend(process.env.RESEND_API_KEY);
