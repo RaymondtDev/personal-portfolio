@@ -151,7 +151,7 @@ onMounted(() => {
     <div class="pricing-cards">
       <PricingCard
         package-title="Essential Website"
-        package-price="2500"
+        package-price="4000"
         package-description="A 1-3 page website to jump-start your business' online presence."
         :package-features="[
           'Singe or multi-page website',
@@ -167,7 +167,7 @@ onMounted(() => {
       />
       <PricingCard
         package-title="Full-Stack Website"
-        package-price="8000"
+        package-price="12000"
         package-description="Web-application with a client-facing user interface, a server, and a database."
         :package-features="[
           'Authentication & Authorization Layer',
@@ -180,7 +180,7 @@ onMounted(() => {
       />
       <PricingCard
         package-title="Admin Dashboard"
-        package-price="15000"
+        package-price="18000"
         package-description="MVP (Minimum Viable Product) Admin Dashboard for business analytics and server-side operations."
         :package-features="[
           'Authentication & Authorization Layer',
